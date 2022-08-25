@@ -49,7 +49,7 @@ export default function PlaceOrderScreen() {
       dispatch({ type: 'CREATE_REQUEST' });
 
       const { data } = await Axios.post(
-        '/api/orders',
+        'https://cartmax-client.herokuapp.com/api/orders',
         {
           orderItems: cart.cartItems,
           shippingAddress: cart.shippingAddress,
@@ -77,7 +77,7 @@ export default function PlaceOrderScreen() {
 
   useEffect(() => {
     if (!cart.paymentMethod) {
-      navigate('/payment');
+      navigate('https://cartmax-client.herokuapp.com/payment');
     }
   }, [cart, navigate]);
 
@@ -99,7 +99,9 @@ export default function PlaceOrderScreen() {
                 {cart.shippingAddress.city}, {cart.shippingAddress.postalCode},
                 {cart.shippingAddress.country}
               </Card.Text>
-              <Link to="/shipping">Edit</Link>
+              <Link to="https://cartmax-client.herokuapp.com/shipping">
+                Edit
+              </Link>
             </Card.Body>
           </Card>
 
@@ -109,7 +111,9 @@ export default function PlaceOrderScreen() {
               <Card.Text>
                 <strong>Method:</strong> {cart.paymentMethod}
               </Card.Text>
-              <Link to="/payment">Edit</Link>
+              <Link to="https://cartmax-client.herokuapp.com/payment">
+                Edit
+              </Link>
             </Card.Body>
           </Card>
 
@@ -126,7 +130,11 @@ export default function PlaceOrderScreen() {
                           alt={item.name}
                           className="img-fluid rounded img-thumbnail"
                         ></img>{' '}
-                        <Link to={`/product/${item.slug}`}>{item.name}</Link>
+                        <Link
+                          to={`https://cartmax-client.herokuapp.com/product/${item.slug}`}
+                        >
+                          {item.name}
+                        </Link>
                       </Col>
                       <Col md={3}>
                         <span>{item.quantity}</span>

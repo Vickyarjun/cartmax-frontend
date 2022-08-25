@@ -35,7 +35,7 @@ export default function OrderHistoryScreen() {
       dispatch({ type: 'FETCH_REQUEST' });
       try {
         const { data } = await axios.get(
-          `/api/orders/mine`,
+          `https://cartmax-client.herokuapp.com/api/orders/mine`,
 
           { headers: { Authorization: `Bearer ${userInfo.token}` } }
         );
@@ -90,7 +90,9 @@ export default function OrderHistoryScreen() {
                     type="button"
                     variant="light"
                     onClick={() => {
-                      navigate(`/order/${order._id}`);
+                      navigate(
+                        `https://cartmax-client.herokuapp.com/order/${order._id}`
+                      );
                     }}
                   >
                     Details

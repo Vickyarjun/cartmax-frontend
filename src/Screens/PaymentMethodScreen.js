@@ -19,14 +19,14 @@ export default function PaymentMethodScreen() {
 
   useEffect(() => {
     if (!shippingAddress.address) {
-      navigate('/shipping');
+      navigate('https://cartmax-client.herokuapp.com/shipping');
     }
   }, [shippingAddress, navigate]);
   const submitHandler = (e) => {
     e.preventDefault();
     ctxDispatch({ type: 'SAVE_PAYMENT_METHOD', payload: paymentMethodName });
     localStorage.setItem('paymentMethod', paymentMethodName);
-    navigate('/placeorder');
+    navigate('https://cartmax-client.herokuapp.com/placeorder');
   };
   return (
     <div>

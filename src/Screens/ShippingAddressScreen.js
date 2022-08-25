@@ -21,7 +21,9 @@ export default function ShippingAddressScreen() {
   );
   useEffect(() => {
     if (!userInfo) {
-      navigate('/signin?redirect=/shipping');
+      navigate(
+        'https://cartmax-client.herokuapp.com/signin?redirect=/shipping'
+      );
     }
   }, [userInfo, navigate]);
   const [country, setCountry] = useState(shippingAddress.country || '');
@@ -47,7 +49,7 @@ export default function ShippingAddressScreen() {
         country,
       })
     );
-    navigate('/payment');
+    navigate('https://cartmax-client.herokuapp.com/payment');
   };
   return (
     <div>
