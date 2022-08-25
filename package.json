@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "proxy": "https://cartmax-shopping-app.herokuapp.com",
+  "proxy": "https://cartmax-client.herokuapp.com",
   "version": "0.1.0",
   "private": true,
   "engines": {
