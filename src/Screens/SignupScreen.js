@@ -14,9 +14,7 @@ export default function SignupScreen() {
   const navigate = useNavigate();
   const { search } = useLocation();
   const redirectInUrl = new URLSearchParams(search).get('redirect');
-  const redirect = redirectInUrl
-    ? redirectInUrl
-    : 'https://cartmax-client.herokuapp.com/';
+  const redirect = redirectInUrl ? redirectInUrl : '/';
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -33,17 +31,14 @@ export default function SignupScreen() {
       return;
     }
     try {
-      const { data } = await Axios.post(
-        'https://cartmax-client.herokuapp.com/api/users/signup',
-        {
-          name,
-          email,
-          password,
-        }
-      );
+      const { data } = await Axios.post('/api/users/signup', {
+        name,
+        email,
+        password,
+      });
       ctxDispatch({ type: 'USER_SIGNIN', payload: data });
       localStorage.setItem('userInfo', JSON.stringify(data));
-      navigate(redirect || 'https://cartmax-client.herokuapp.com/');
+      navigate(redirect || '/');
     } catch (err) {
       toast.error(getError(err));
     }
@@ -95,11 +90,7 @@ export default function SignupScreen() {
         </div>
         <div className="mb-3">
           Already have an account?{' '}
-          <Link
-            to={`https://cartmax-client.herokuapp.com/signup?redirect=${redirect}`}
-          >
-            Sign-In
-          </Link>
+          <Link to={`/signup?redirect=${redirect}`}>Sign-In</Link>
         </div>
       </Form>
     </Container>

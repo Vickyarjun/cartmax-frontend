@@ -5,9 +5,5 @@ import { Store } from '../Store';
 export default function AdminRoute({ children }) {
   const { state } = useContext(Store);
   const { userInfo } = state;
-  return userInfo && userInfo.isAdmin ? (
-    children
-  ) : (
-    <Navigate to="https://cartmax-client.herokuapp.com/signin" />
-  );
+  return userInfo && userInfo.isAdmin ? children : <Navigate to="/signin" />;
 }
