@@ -58,9 +58,7 @@ function ProductScreen() {
     const fetchData = async () => {
       dispatch({ type: 'FETCH_REQUEST' });
       try {
-        const result = await axios.get(
-          `https://cartmax-server.herokuapp.com/api/products/slug/${slug}`
-        );
+        const result = await axios.get(`/api/products/slug/${slug}`);
         dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
       } catch (err) {
         dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
@@ -74,9 +72,7 @@ function ProductScreen() {
   const addToCartHandler = async () => {
     const existItem = cart.cartItems.find((x) => x._id === product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
-    const { data } = await axios.get(
-      `https://cartmax-server.herokuapp.com/api/products/${product._id}`
-    );
+    const { data } = await axios.get(`/api/products/${product._id}`);
     if (data.countInStock < quantity) {
       window.alert('Sorry. Product is out of stock');
       return;
@@ -85,7 +81,7 @@ function ProductScreen() {
       type: 'CART_ADD_ITEM',
       payload: { ...product, quantity },
     });
-    navigate('https://cartmax-server.herokuapp.com/cart');
+    navigate('/cart');
   };
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -95,7 +91,7 @@ function ProductScreen() {
     }
     try {
       const { data } = await axios.post(
-        `https://cartmax-server.herokuapp.com/api/products/${product._id}/reviews`,
+        `/api/products/${product._id}/reviews`,
         { rating, comment, name: userInfo.name },
         {
           headers: { Authorization: `Bearer ${userInfo.token}` },
@@ -268,9 +264,7 @@ function ProductScreen() {
           ) : (
             <MessageBox>
               Please{' '}
-              <Link
-                to={`https://cartmax-server.herokuapp.com/signin?redirect=/product/${product.slug}`}
-              >
+              <Link to={`/signin?redirect=/product/${product.slug}`}>
                 Sign In
               </Link>{' '}
               to write a review
