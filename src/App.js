@@ -43,7 +43,7 @@ function App() {
     localStorage.removeItem('userInfo');
     localStorage.removeItem('shippingAddress');
     localStorage.removeItem('paymentMethod');
-    window.location.href = '/signin';
+    window.location.href = 'https://cartmax-server.herokuapp.com/signin';
   };
   const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
   const [categories, setCategories] = useState([]);
@@ -51,7 +51,9 @@ function App() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const { data } = await axios.get(`/api/products/categories`);
+        const { data } = await axios.get(
+          `https://cartmax-server.herokuapp.com/api/products/categories`
+        );
         setCategories(data);
       } catch (err) {
         toast.error(getError(err));
@@ -79,14 +81,17 @@ function App() {
                 <i className="fas fa-bars"></i>
               </Button>
 
-              <LinkContainer to="/">
+              <LinkContainer to="https://cartmax-server.herokuapp.com/">
                 <Navbar.Brand>cartmax</Navbar.Brand>
               </LinkContainer>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <SearchBox />
                 <Nav className="me-auto w-100 justify-content-end">
-                  <Link to="/cart" className="nav-link">
+                  <Link
+                    to="https://cartmax-server.herokuapp.com/cart"
+                    className="nav-link"
+                  >
                     <img src="/images/cart2.png" alt="cart-img" />
                     {cart.cartItems.length > 0 && (
                       <Badge pill bg="danger">
@@ -96,10 +101,10 @@ function App() {
                   </Link>
                   {userInfo ? (
                     <NavDropdown title={userInfo.name} id="basic-nav-dropdown">
-                      <LinkContainer to="/profile">
+                      <LinkContainer to="https://cartmax-server.herokuapp.com/profile">
                         <NavDropdown.Item>User Profile</NavDropdown.Item>
                       </LinkContainer>
-                      <LinkContainer to="/orderhistory">
+                      <LinkContainer to="https://cartmax-server.herokuapp.com/orderhistory">
                         <NavDropdown.Item>Order History</NavDropdown.Item>
                       </LinkContainer>
                       <NavDropdown.Divider />
@@ -112,22 +117,25 @@ function App() {
                       </Link>
                     </NavDropdown>
                   ) : (
-                    <Link className="nav-link" to="/signin">
+                    <Link
+                      className="nav-link"
+                      to="https://cartmax-server.herokuapp.com/signin"
+                    >
                       Sign In
                     </Link>
                   )}
                   {userInfo && userInfo.isAdmin && (
                     <NavDropdown title="Admin" id="admin-nav-dropdown">
-                      <LinkContainer to="/admin/dashboard">
+                      <LinkContainer to="https://cartmax-server.herokuapp.com/admin/dashboard">
                         <NavDropdown.Item>Dashboard</NavDropdown.Item>
                       </LinkContainer>
-                      <LinkContainer to="/admin/products">
+                      <LinkContainer to="https://cartmax-server.herokuapp.com/admin/products">
                         <NavDropdown.Item>Products</NavDropdown.Item>
                       </LinkContainer>
-                      <LinkContainer to="/admin/orders">
+                      <LinkContainer to="https://cartmax-server.herokuapp.com/admin/orders">
                         <NavDropdown.Item>Orders</NavDropdown.Item>
                       </LinkContainer>
-                      <LinkContainer to="/admin/users">
+                      <LinkContainer to="https://cartmax-server.herokuapp.com/admin/users">
                         <NavDropdown.Item>Users</NavDropdown.Item>
                       </LinkContainer>
                     </NavDropdown>
@@ -151,7 +159,7 @@ function App() {
             {categories.map((category) => (
               <Nav.Item key={category}>
                 <LinkContainer
-                  to={`/search?category=${category}`}
+                  to={`https://cartmax-server.herokuapp.com/search?category=${category}`}
                   onClick={() => setSidebarIsOpen(false)}
                 >
                   <Nav.Link>{category}</Nav.Link>
@@ -163,24 +171,48 @@ function App() {
         <main>
           <Container className="mt-3">
             <Routes>
-              <Route path="/" element={<HomeScreen />} />
-              <Route path="/cart" element={<CartScreen />} />
-              <Route path="/search" element={<SearchScreen />} />
-              <Route path="/signin" element={<SigninScreen />} />
-              <Route path="/signup" element={<SignupScreen />} />
               <Route
-                path="/profile"
+                path="https://cartmax-server.herokuapp.com/"
+                element={<HomeScreen />}
+              />
+              <Route
+                path="https://cartmax-server.herokuapp.com/cart"
+                element={<CartScreen />}
+              />
+              <Route
+                path="https://cartmax-server.herokuapp.com/search"
+                element={<SearchScreen />}
+              />
+              <Route
+                path="https://cartmax-server.herokuapp.com/signin"
+                element={<SigninScreen />}
+              />
+              <Route
+                path="https://cartmax-server.herokuapp.com/signup"
+                element={<SignupScreen />}
+              />
+              <Route
+                path="https://cartmax-server.herokuapp.com/profile"
                 element={
                   <ProtectedRoute>
                     <ProfileScreen />
                   </ProtectedRoute>
                 }
               />
-              <Route path="/shipping" element={<ShippingAddressScreen />} />
-              <Route path="/payment" element={<PaymentMethodScreen />} />
-              <Route path="/placeorder" element={<PlaceOrderScreen />} />
               <Route
-                path="/order/:id"
+                path="https://cartmax-server.herokuapp.com/shipping"
+                element={<ShippingAddressScreen />}
+              />
+              <Route
+                path="https://cartmax-server.herokuapp.com/payment"
+                element={<PaymentMethodScreen />}
+              />
+              <Route
+                path="https://cartmax-server.herokuapp.com/placeorder"
+                element={<PlaceOrderScreen />}
+              />
+              <Route
+                path="https://cartmax-server.herokuapp.com/order/:id"
                 element={
                   <ProtectedRoute>
                     <OrderScreen />
@@ -188,17 +220,20 @@ function App() {
                 }
               ></Route>
               <Route
-                path="/orderhistory"
+                path="https://cartmax-server.herokuapp.com/orderhistory"
                 element={
                   <ProtectedRoute>
                     <OrderHistoryScreen />
                   </ProtectedRoute>
                 }
               />
-              <Route path="/product/:slug" element={<ProductScreen />} />
+              <Route
+                path="https://cartmax-server.herokuapp.com/product/:slug"
+                element={<ProductScreen />}
+              />
               {/* Admin Routes */}
               <Route
-                path="/admin/dashboard"
+                path="https://cartmax-server.herokuapp.com/admin/dashboard"
                 element={
                   <AdminRoute>
                     <DashboardScreen />
@@ -206,7 +241,7 @@ function App() {
                 }
               ></Route>
               <Route
-                path="/admin/orders"
+                path="https://cartmax-server.herokuapp.com/admin/orders"
                 element={
                   <AdminRoute>
                     <OrderListScreen />
@@ -214,7 +249,7 @@ function App() {
                 }
               ></Route>
               <Route
-                path="/admin/user/:id"
+                path="https://cartmax-server.herokuapp.com/admin/user/:id"
                 element={
                   <AdminRoute>
                     <UserEditScreen />
@@ -222,7 +257,7 @@ function App() {
                 }
               ></Route>
               <Route
-                path="/admin/products"
+                path="https://cartmax-server.herokuapp.com/admin/products"
                 element={
                   <AdminRoute>
                     <ProductListScreen />
@@ -230,7 +265,7 @@ function App() {
                 }
               ></Route>
               <Route
-                path="/admin/product/:id"
+                path="https://cartmax-server.herokuapp.com/admin/product/:id"
                 element={
                   <AdminRoute>
                     <ProductEditScreen />
@@ -238,7 +273,7 @@ function App() {
                 }
               ></Route>
               <Route
-                path="/admin/users"
+                path="https://cartmax-server.herokuapp.com/admin/users"
                 element={
                   <AdminRoute>
                     <UserListScreen />
