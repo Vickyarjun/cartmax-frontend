@@ -43,7 +43,7 @@ function App() {
     localStorage.removeItem('userInfo');
     localStorage.removeItem('shippingAddress');
     localStorage.removeItem('paymentMethod');
-    window.location.href = '/signin';
+    window.location.href = 'https://cartmax-server.herokuapp.com/signin';
   };
   const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
   const [categories, setCategories] = useState([]);
@@ -51,7 +51,9 @@ function App() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const { data } = await axios.get(`/api/products/categories`);
+        const { data } = await axios.get(
+          `https://cartmax-server.herokuapp.com/api/products/categories`
+        );
         setCategories(data);
       } catch (err) {
         toast.error(getError(err));
