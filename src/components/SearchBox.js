@@ -10,7 +10,11 @@ export default function SearchBox() {
   const [query, setQuery] = useState('');
   const submitHandler = (e) => {
     e.preventDefault();
-    navigate(query ? `/search/?query=${query}` : '/search');
+    navigate(
+      query
+        ? `https://cartmax-server.herokuapp.com/search/?query=${query}`
+        : 'https://cartmax-server.herokuapp.com/search'
+    );
   };
 
   return (

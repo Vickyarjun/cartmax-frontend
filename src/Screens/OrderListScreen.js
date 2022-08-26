@@ -51,9 +51,12 @@ export default function OrderListScreen() {
     const fetchData = async () => {
       try {
         dispatch({ type: 'FETCH_REQUEST' });
-        const { data } = await axios.get(`/api/orders`, {
-          headers: { Authorization: `Bearer ${userInfo.token}` },
-        });
+        const { data } = await axios.get(
+          `https://cartmax-server.herokuapp.com/api/orders`,
+          {
+            headers: { Authorization: `Bearer ${userInfo.token}` },
+          }
+        );
         dispatch({ type: 'FETCH_SUCCESS', payload: data });
       } catch (err) {
         dispatch({
@@ -73,9 +76,12 @@ export default function OrderListScreen() {
     if (window.confirm('Are you sure to delete?')) {
       try {
         dispatch({ type: 'DELETE_REQUEST' });
-        await axios.delete(`/api/orders/${order._id}`, {
-          headers: { Authorization: `Bearer ${userInfo.token}` },
-        });
+        await axios.delete(
+          `https://cartmax-server.herokuapp.com/api/orders/${order._id}`,
+          {
+            headers: { Authorization: `Bearer ${userInfo.token}` },
+          }
+        );
         toast.success('order deleted successfully');
         dispatch({ type: 'DELETE_SUCCESS' });
       } catch (err) {
@@ -131,7 +137,9 @@ export default function OrderListScreen() {
                     type="button"
                     variant="light"
                     onClick={() => {
-                      navigate(`/order/${order._id}`);
+                      navigate(
+                        `https://cartmax-server.herokuapp.com/order/${order._id}`
+                      );
                     }}
                   >
                     Details

@@ -18,7 +18,9 @@ export default function CartScreen() {
   } = state;
 
   const updateCartHandler = async (item, quantity) => {
-    const { data } = await axios.get(`/api/products/${item._id}`);
+    const { data } = await axios.get(
+      `https://cartmax-server.herokuapp.com/api/products/${item._id}`
+    );
     if (data.countInStock < quantity) {
       window.alert('Sorry. Product is out of stock');
       return;
@@ -33,7 +35,7 @@ export default function CartScreen() {
   };
 
   const checkoutHandler = () => {
-    navigate('/signin?redirect=/shipping');
+    navigate('https://cartmax-server.herokuapp.com/signin?redirect=/shipping');
   };
   return (
     <div>
@@ -58,7 +60,11 @@ export default function CartScreen() {
                         alt={item.name}
                         className="img-fluid rounded img-thumbnail"
                       ></img>{' '}
-                      <Link to={`/product/${item.slug}`}>{item.name}</Link>
+                      <Link
+                        to={`https://cartmax-server.herokuapp.com/product/${item.slug}`}
+                      >
+                        {item.name}
+                      </Link>
                     </Col>
                     <Col md={3}>
                       <Button
