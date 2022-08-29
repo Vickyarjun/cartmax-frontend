@@ -134,7 +134,7 @@ export default function SearchScreen() {
   };
 
   return (
-    <div>
+    <div className="product-view">
       <Helmet>
         <title>Search Products</title>
       </Helmet>

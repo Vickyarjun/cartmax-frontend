@@ -95,7 +95,7 @@ export default function UserListScreen() {
     }
   };
   return (
-    <div>
+    <div className="product-view">
       <Helmet>
         <title>Users</title>
       </Helmet>

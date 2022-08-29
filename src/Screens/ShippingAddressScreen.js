@@ -50,7 +50,7 @@ export default function ShippingAddressScreen() {
     navigate('/payment');
   };
   return (
-    <div>
+    <div className="product-view">
       <Helmet>
         <title>Shipping Address</title>
       </Helmet>

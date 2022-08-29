@@ -45,7 +45,7 @@ function HomeScreen() {
     fetchData();
   }, []);
   return (
-    <div>
+    <div className="product-view">
       <Helmet>
         <title>cartmax</title>
       </Helmet>

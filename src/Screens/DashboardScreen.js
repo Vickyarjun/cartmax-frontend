@@ -54,7 +54,7 @@ export default function DashboardScreen() {
   }, [userInfo]);
 
   return (
-    <div>
+    <div className="product-view">
       <h1>Dashboard</h1>
       {loading ? (
         <LoadingBox />

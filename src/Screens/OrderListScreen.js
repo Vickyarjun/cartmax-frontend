@@ -94,7 +94,7 @@ export default function OrderListScreen() {
   };
 
   return (
-    <div>
+    <div className="product-view">
       <Helmet>
         <title>Orders</title>
       </Helmet>

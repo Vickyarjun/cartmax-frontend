@@ -72,7 +72,7 @@ function App() {
       >
         <ToastContainer position="bottom-center" limit={1} />
         <header>
-          <Navbar bg="dark" variant="dark" expand="lg">
+          <Navbar className="fix" bg="dark" variant="dark" expand="lg">
             <Container>
               <Button
                 variant="dark"
@@ -250,7 +250,7 @@ function App() {
             </Routes>
           </Container>
         </main>
-        <footer>
+        <footer className="footer">
           <div className="text-center">All rights reserved.</div>
         </footer>
       </div>

@@ -142,7 +142,7 @@ export default function ProductListScreen() {
   };
 
   return (
-    <div>
+    <div className="product-view">
       <Row>
         <Col>
           <h1>Products</h1>
