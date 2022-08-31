@@ -73,10 +73,10 @@ main {
 }
 .side-navbar {
   width: 240px;
-  height: 330%;
-  position: absolute;
+  height: 100vh;
+  position: fixed;
   left: -300px;
-  background-color: #100901;
+  background-color: #212529;
   transition: 0.5s;
 }
 .site-container {
