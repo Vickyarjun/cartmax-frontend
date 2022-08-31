@@ -34,6 +34,7 @@ import ProductEditScreen from './Screens/ProductEditScreen';
 import OrderListScreen from './Screens/OrderListScreen';
 import UserListScreen from './Screens/UserListScreen';
 import UserEditScreen from './Screens/UserEditScreen';
+import Footer from './Screens/footer';
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { cart, userInfo } = state;
@@ -43,7 +44,7 @@ function App() {
     localStorage.removeItem('userInfo');
     localStorage.removeItem('shippingAddress');
     localStorage.removeItem('paymentMethod');
-    window.location.href = '/';
+    window.location.href = '/signin';
   };
   const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
   const [categories, setCategories] = useState([]);
@@ -250,9 +251,7 @@ function App() {
             </Routes>
           </Container>
         </main>
-        <footer className="footer">
-          <div className="text-center">All rights reserved.</div>
-        </footer>
+        <Footer />
       </div>
     </BrowserRouter>
   );
