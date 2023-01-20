@@ -19,7 +19,7 @@ export default function CartScreen() {
 
   const updateCartHandler = async (item, quantity) => {
     const { data } = await axios.get(
-      `https://cartmax-server.herokuapp.com/api/products/${item._id}`
+      `https://cartmax-server-data.onrender.com/api/products/${item._id}`
     );
     if (data.countInStock < quantity) {
       window.alert('Sorry. Product is out of stock');

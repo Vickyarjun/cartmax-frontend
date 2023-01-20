@@ -54,7 +54,7 @@ export default function UserListScreen() {
       try {
         dispatch({ type: 'FETCH_REQUEST' });
         const { data } = await axios.get(
-          `https://cartmax-server.herokuapp.com/api/users`,
+          `https://cartmax-server-data.onrender.com/api/users`,
           {
             headers: { Authorization: `Bearer ${userInfo.token}` },
           }
@@ -79,7 +79,7 @@ export default function UserListScreen() {
       try {
         dispatch({ type: 'DELETE_REQUEST' });
         await axios.delete(
-          `https://cartmax-server.herokuapp.com/api/users/${user._id}`,
+          `https://cartmax-server-data.onrender.com/api/users/${user._id}`,
           {
             headers: { Authorization: `Bearer ${userInfo.token}` },
           }

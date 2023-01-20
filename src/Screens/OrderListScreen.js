@@ -52,7 +52,7 @@ export default function OrderListScreen() {
       try {
         dispatch({ type: 'FETCH_REQUEST' });
         const { data } = await axios.get(
-          `https://cartmax-server.herokuapp.com/api/orders`,
+          `https://cartmax-server-data.onrender.com/api/orders`,
           {
             headers: { Authorization: `Bearer ${userInfo.token}` },
           }
@@ -77,7 +77,7 @@ export default function OrderListScreen() {
       try {
         dispatch({ type: 'DELETE_REQUEST' });
         await axios.delete(
-          `https://cartmax-server.herokuapp.com/api/orders/${order._id}`,
+          `https://cartmax-server-data.onrender.com/api/orders/${order._id}`,
           {
             headers: { Authorization: `Bearer ${userInfo.token}` },
           }

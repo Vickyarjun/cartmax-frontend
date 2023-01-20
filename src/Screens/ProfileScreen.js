@@ -37,7 +37,7 @@ export default function ProfileScreen() {
     e.preventDefault();
     try {
       const { data } = await axios.put(
-        'https://cartmax-server.herokuapp.com/api/users/profile',
+        'https://cartmax-server-data.onrender.com/api/users/profile',
         {
           name,
           email,

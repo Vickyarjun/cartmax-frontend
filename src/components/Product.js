@@ -18,7 +18,7 @@ function Product(props) {
     const existItem = cartItems.find((x) => x._id === product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
     const { data } = await axios.get(
-      `https://cartmax-server.herokuapp.com/api/products/${item._id}`
+      `https://cartmax-server-data.onrender.com/api/products/${item._id}`
     );
     if (data.countInStock < quantity) {
       window.alert('Sorry. Product is out of stock');

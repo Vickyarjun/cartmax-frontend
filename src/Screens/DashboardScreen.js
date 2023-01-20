@@ -37,7 +37,7 @@ export default function DashboardScreen() {
     const fetchData = async () => {
       try {
         const { data } = await axios.get(
-          'https://cartmax-server.herokuapp.com/api/orders/summary',
+          'https://cartmax-server-data.onrender.com/api/orders/summary',
           {
             headers: { Authorization: `Bearer ${userInfo.token}` },
           }

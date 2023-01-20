@@ -52,7 +52,7 @@ export default function UserEditScreen() {
       try {
         dispatch({ type: 'FETCH_REQUEST' });
         const { data } = await axios.get(
-          `https://cartmax-server.herokuapp.com/api/users/${userId}`,
+          `https://cartmax-server-data.onrender.com/api/users/${userId}`,
           {
             headers: { Authorization: `Bearer ${userInfo.token}` },
           }
@@ -76,7 +76,7 @@ export default function UserEditScreen() {
     try {
       dispatch({ type: 'UPDATE_REQUEST' });
       await axios.put(
-        `https://cartmax-server.herokuapp.com/api/users/${userId}`,
+        `https://cartmax-server-data.onrender.com/api/users/${userId}`,
         { _id: userId, name, email, isAdmin },
         {
           headers: { Authorization: `Bearer ${userInfo.token}` },

@@ -26,7 +26,7 @@ export default function SigninScreen() {
     e.preventDefault();
     try {
       const { data } = await Axios.post(
-        'https://cartmax-server.herokuapp.com/api/users/signin',
+        'https://cartmax-server-data.onrender.com/api/users/signin',
         {
           email,
           password,

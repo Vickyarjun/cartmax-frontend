@@ -53,7 +53,7 @@ function App() {
     const fetchCategories = async () => {
       try {
         const { data } = await axios.get(
-          `https://cartmax-server.herokuapp.com/api/products/categories`
+          `https://cartmax-server-data.onrender.com/api/products/categories`
         );
         setCategories(data);
       } catch (err) {

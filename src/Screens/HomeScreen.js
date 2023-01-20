@@ -33,7 +33,7 @@ function HomeScreen() {
       dispatch({ type: 'FETCH_REQUEST' });
       try {
         const result = await axios.get(
-          'https://cartmax-server.herokuapp.com/api/products'
+          'https://cartmax-server-data.onrender.com/api/products'
         );
         dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
       } catch (err) {

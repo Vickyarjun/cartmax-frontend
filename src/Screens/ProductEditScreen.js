@@ -69,7 +69,7 @@ export default function ProductEditScreen() {
       try {
         dispatch({ type: 'FETCH_REQUEST' });
         const { data } = await axios.get(
-          `https://cartmax-server.herokuapp.com/api/products/${productId}`
+          `https://cartmax-server-data.onrender.com/api/products/${productId}`
         );
         setName(data.name);
         setSlug(data.slug);
@@ -95,7 +95,7 @@ export default function ProductEditScreen() {
     try {
       dispatch({ type: 'UPDATE_REQUEST' });
       await axios.put(
-        `https://cartmax-server.herokuapp.com/api/products/${productId}`,
+        `https://cartmax-server-data.onrender.com/api/products/${productId}`,
         {
           _id: productId,
           name,
@@ -128,7 +128,7 @@ export default function ProductEditScreen() {
     try {
       dispatch({ type: 'UPLOAD_REQUEST' });
       const { data } = await axios.post(
-        'https://cartmax-server.herokuapp.com/api/upload',
+        'https://cartmax-server-data.onrender.com/api/upload',
         bodyFormData,
         {
           headers: {

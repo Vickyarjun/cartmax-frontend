@@ -32,7 +32,7 @@ export default function SignupScreen() {
     }
     try {
       const { data } = await Axios.post(
-        'https://cartmax-server.herokuapp.com/api/users/signup',
+        'https://cartmax-server-data.onrender.com/api/users/signup',
         {
           name,
           email,
